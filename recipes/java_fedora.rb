@@ -17,8 +17,8 @@
 # limitations under the License.
 #
 
-# enable debuginfo repo
-file "/etc/yum.repos.d/fedora-updates.repo" do
+file "enable debuginfo repo" do
+  path "/etc/yum.repos.d/fedora-updates.repo"
   _file = Chef::Util::FileEdit.new(path)
   _file.search_file_replace_line(/^enabled=0/, "#enabled=0\n")
   _file.insert_line_after_match(/^#enabled=0/, "enabled=1\n")
@@ -28,8 +28,8 @@ end
 # install JDK
 include_recipe 'java'
 
-# disable debuginfo repo
-file "/etc/yum.repos.d/fedora-updates.repo" do
+file "disable debuginfo repo" do
+  path "/etc/yum.repos.d/fedora-updates.repo"
   _file = Chef::Util::FileEdit.new(path)
   _file.search_file_replace(/^#enabled=0\nenabled=1/, "enabled=0\n")
   content _file.send(:editor).lines.join

@@ -17,8 +17,8 @@
 # limitations under the License.
 #
 
-# enable debuginfo repo
-file "/etc/yum.repos.d/CentOS-Debuginfo.repo" do
+file "enable debuginfo repo" do
+  path "/etc/yum.repos.d/CentOS-Debuginfo.repo"
   _file = Chef::Util::FileEdit.new(path)
   _file.search_file_replace_line(/enabled=0/, "enabled=1")
   content _file.send(:editor).lines.join
@@ -27,8 +27,8 @@ end
 # install JDK
 include_recipe 'java'
 
-# disable debuginfo repo
-file "/etc/yum.repos.d/CentOS-Debuginfo.repo" do
+file "disable debuginfo repo" do
+  path "/etc/yum.repos.d/CentOS-Debuginfo.repo"
   _file = Chef::Util::FileEdit.new(path)
   _file.search_file_replace_line(/enabled=1/, "enabled=0")
   content _file.send(:editor).lines.join
