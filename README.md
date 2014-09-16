@@ -64,86 +64,22 @@ Install OpenJDK, HeapStats agent, Wildfly that attached HeapStats agent (JAVA_OP
 
 Attributes
 ----------
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['heapstats']['heapstatsurl']</tt></td>
-    <td>String</td>
-    <td>heapstats agent download site</td>
-    <td><tt>http://icedtea.wildebeest.org/download/heapstats</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['heapstats']['version']</tt></td>
-    <td>String</td>
-    <td>heapstats agent version</td>
-    <td><tt>1.1.2</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['heapstats']['build']</tt></td>
-    <td>String</td>
-    <td>heapstats build number</td>
-    <td><tt>0</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['heapstats']['file']</tt></td>
-    <td>String</td>
-    <td>Java heap snapshot filename</td>
-    <td><tt>heapstats_snapshot.dat</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['heapstats']['heaplogfile']</tt></td>
-    <td>String</td>
-    <td>Statistics log file for <a href="http://icedtea.classpath.org/wiki/HeapStats/Informations_to_collect#Normal_mode">normal mode</a></td>
-    <td><tt>heapstats_log.csv</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['heapstats']['archivefile']</tt></td>
-    <td>String</td>
-    <td>Log archive name for <a href="http://icedtea.classpath.org/wiki/HeapStats/Informations_to_collect#All_mode">all mode</a></td>
-    <td><tt>heapstats_analyze.zip</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['heapstats']['alert_percentage']</tt></td>
-    <td>Integer/td>
-    <td>Threshold for sending alert messages about each Java class. This value depends on "rank_order" . If increments from previous snapshot is greater than this threshold (delta), or the heap usage is greater than this threshold (usage), agent shows alert message to stderr and send SNMP trap. If this value is set zero, heap alert is disabled.</td>
-    <td><tt>50</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['heapstats']['javaheap_alert_percentage']</tt></td>
-    <td>Integer</td>
-    <td>Threshold for sending total Java heap alert message. If Java heap usage is greater than this threshold, agent shows alert message to stderr and send SNMP trap. If this value is set zero, this alert is disabled.</td>
-    <td><tt>95</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['heapstats']['snmp_send']</tt></td>
-    <td>Boolean</td>
-    <td>If this value is set true, agent send SNMP trap when agent traps various alerts and errors. Otherwise (false), agent does NOT send any SNMP traps.</td>
-    <td><tt>false</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['heapstats']['snmp_target']</tt></td>
-    <td>String</td>
-    <td>Host which SNMP traps are handled.</td>
-    <td><tt>localhost</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['heapstats']['snmp_comname']</tt></td>
-    <td>String</td>
-    <td>SNMP community name.</td>
-    <td><tt>public</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['heapstats']['kill_on_error']</tt></td>
-    <td>Boolean</td>
-    <td>If this value is set true, the agent will kill targeted JVM process when catches OutOfMemoryError or DeadLock.</td>
-    <td><tt>false</tt></td>
-  </tr>
-</table>
+
+- `['heapstats']['heapstatsurl']`: heapstats agent download site. (default http://icedtea.wildebeest.org/download/heapstats)
+- `['heapstats']['version']`: heapstats agent version. (default 1.1.2)
+- `['heapstats']['build']`: heapstats build number (default 0)
+- `['heapstats']['file']`: Java heap snapshot filename. By default, write snapshot file to java process current directory.  (default heapstats_snapshot.dat)
+- `['heapstats']['heaplogfile']`: Statistics log file for <a href="http://icedtea.classpath.org/wiki/HeapStats/Informations_to_collect#Normal_mode">normal mode</a>
+  (default heapstats_log.csv)
+- `['heapstats']['archivefile']`: Log archive name for <a href="http://icedtea.classpath.org/wiki/HeapStats/Informations_to_collect#All_mode">all mode</a>
+  (default heapstats_analyze.zip)
+- `['heapstats']['alert_percentage']`: Threshold for sending alert messages about each Java class. This value depends on "rank_order" . If increments from previous snapshot is greater than this threshold (delta), or the heap usage is greater than this threshold (usage), agent shows alert message to stderr and send SNMP trap. If this value is set zero, heap alert is disabled. (default 50)
+- `['heapstats']['javaheap_alert_percentage']`: Threshold for sending total Java heap alert message. If Java heap usage is greater than this threshold, agent shows alert message to stderr and send SNMP trap. If this value is set zero, this alert is disabled. (default 95)
+- `['heapstats']['snmp_send']`: If this value is set true, agent send SNMP trap when agent traps various alerts and errors. Otherwise (false), agent does NOT send any SNMP traps. (default false)
+- `['heapstats']['snmp_target']`: Host which SNMP traps are handled. (default localhost)
+- `['heapstats']['snmp_comname']`: SNMP community name. (default public)
+- `['heapstats']['kill_on_error']`: If this value is set true, the agent will kill targeted JVM process when catches OutOfMemoryError or DeadLock. (default false)
+
 
 Authors
 --------
