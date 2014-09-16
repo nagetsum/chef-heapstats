@@ -5,9 +5,16 @@ This cookbook install java monitoring and analysis tool <a href="http://icedtea.
 
 Requirements
 --------------
+### cookbook requirements
 
 - Java Opscode Community Cookbook
 - Chef Client 11+
+
+### HeapStats agent requirements
+
+- OracleJDK or OpenJDK JDK6u18 or above, JDK7, JDK8.
+- If you use OpenJDK, require symbol information. (debuginfo package)
+- Linux (x86/x86_64) 
 
 Platform
 ----------
